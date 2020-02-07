@@ -22,16 +22,13 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class VENTokenField;
 @protocol VENTokenFieldDelegate <NSObject>
 @optional
 - (void)tokenField:(VENTokenField *)tokenField didEnterText:(NSString *)text;
 - (void)tokenField:(VENTokenField *)tokenField didDeleteTokenAtIndex:(NSUInteger)index;
-- (void)tokenField:(VENTokenField *)tokenField didChangeText:(nullable NSString *)text;
+- (void)tokenField:(VENTokenField *)tokenField didChangeText:(NSString *)text;
 - (void)tokenFieldDidBeginEditing:(VENTokenField *)tokenField;
-- (void)tokenField:(VENTokenField *)tokenField didChangeContentHeight:(CGFloat)height;
 @end
 
 @protocol VENTokenFieldDataSource <NSObject>
@@ -39,7 +36,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSString *)tokenField:(VENTokenField *)tokenField titleForTokenAtIndex:(NSUInteger)index;
 - (NSUInteger)numberOfTokensInTokenField:(VENTokenField *)tokenField;
 - (NSString *)tokenFieldCollapsedText:(VENTokenField *)tokenField;
-- (UIColor *)tokenField:(VENTokenField *)tokenField colorSchemeForTokenAtIndex:(NSUInteger)index;
 @end
 
 
@@ -50,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reloadData;
 - (void)collapse;
-- (nullable NSString *)inputText;
+- (NSString *)inputText;
 
 
 /**-----------------------------------------------------------------------------
@@ -65,23 +61,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) CGFloat minInputWidth;
 
 @property (assign, nonatomic) UIKeyboardType inputTextFieldKeyboardType;
-@property (assign, nonatomic) UIKeyboardAppearance inputTextFieldKeyboardAppearance;
-
-@property (assign, nonatomic) UITextAutocorrectionType autocorrectionType;
-@property (assign, nonatomic) UITextAutocapitalizationType autocapitalizationType;
-@property (assign, nonatomic, nullable) UIView *inputTextFieldAccessoryView;
 @property (strong, nonatomic) UIColor *toLabelTextColor;
-@property (strong, nonatomic, nullable) NSString *toLabelText;
+@property (strong, nonatomic) NSString *toLabelText;
 @property (strong, nonatomic) UIColor *inputTextFieldTextColor;
 
 @property (strong, nonatomic) UILabel *toLabel;
 
-@property (strong, nonatomic, nullable) NSArray *delimiters;
-@property (copy, nonatomic, nullable) NSString *placeholderText;
-@property (copy, nonatomic, nullable) NSString *inputTextFieldAccessibilityLabel;
+@property (copy, nonatomic) NSString *placeholderText;
 
 - (void)setColorScheme:(UIColor *)color;
 
 @end
 
-NS_ASSUME_NONNULL_END
